@@ -1,13 +1,10 @@
 package com.atguigu.gmall.user.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.atguigu.gmall.user.bean.UmsMember;
-import com.atguigu.gmall.user.bean.UserBean;
-import com.atguigu.gmall.user.service.UserService;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.atguigu.gmall.service.UserService;
+import com.atguigu.gmall.bean.UmsMember;
+import com.atguigu.gmall.bean.UmsMemberReceiveAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,6 +14,17 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
+
+
+    @RequestMapping("getReceiveAddressByMemberId")
+    @ResponseBody
+    public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId){
+
+        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = userService.getReceiveAddressByMemberId(memberId);
+        return umsMemberReceiveAddresses;
+
+    }
 
 
     @RequestMapping("index")
